@@ -16,6 +16,16 @@ public class TwoDArray {
 
         }
 
+        for (int[] numbers : matrix) {
+
+            for (int number : numbers) {
+                System.out.print(number + " ");
+            }
+
+            System.out.println();
+
+        }
+
     }
 
 }
