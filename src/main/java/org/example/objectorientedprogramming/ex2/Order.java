@@ -54,6 +54,14 @@ public class Order {
         this(orderId, new ArrayList<>());
     }
 
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void addProducts(Product... products) {
+        this.products.addAll(List.of(products));
+    }
+
     public static void main(String[] args) {
 
     }
