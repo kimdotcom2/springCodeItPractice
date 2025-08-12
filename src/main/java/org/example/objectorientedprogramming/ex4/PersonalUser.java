@@ -13,6 +13,7 @@ public class PersonalUser extends User{
     public void printUserInfo() {
         super.printUserInfo();
         System.out.println("Email: " + email);
+        System.out.println("User ID: " + userId);
     }
 
 }
