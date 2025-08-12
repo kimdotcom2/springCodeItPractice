@@ -1,5 +1,13 @@
 package org.example.objectorientedprogramming.ex4;
 
+class OrderServiceV2 {
+
+    public void paymentProcess(Payment paymentMethod, double amount) {
+        paymentMethod.pay(amount);
+    }
+
+}
+
 public class PolymorphismTest {
 
     public static void main(String[] args) {
@@ -7,7 +15,7 @@ public class PolymorphismTest {
         Payment[] payments = {new CreditCardPayment(), new BankAccountTransferPayment(), new CryptoPayment()};
         double[] amounts = {10000, 20000, 30000};
 
-        OrderService orderService = new OrderService();
+        OrderServiceV2 orderService = new OrderServiceV2();
 
         for (double amount : amounts) {
 
