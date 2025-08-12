@@ -11,7 +11,9 @@ public class PaymentServiceTest {
         try {
             account.withdraw(12000);
         } catch (IllegalStateException e) {
-            System.out.println("잔액과 같거나 작은 금액을 입력하세요.");
+            System.out.println("0보다 커야 합니다.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("출금 오류");
         }
 
         PaymentService paymentService = new PaymentService();
@@ -20,10 +22,22 @@ public class PaymentServiceTest {
 
         try {
 
+            paymentService.paymentProcess(account, 10000);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("0보다 커야 합니다.");
+        } catch (IllegalStateException e) {
+            System.out.println("출금 오류");
+        }
+
+        try {
+
             paymentService.paymentProcess(account, -100);
 
         } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력입니다.");
+            System.out.println("0보다 커야 합니다.");
+        } catch (IllegalStateException e) {
+            System.out.println("출금 오류");
         }
 
     }

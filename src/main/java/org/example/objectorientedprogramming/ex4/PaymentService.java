@@ -4,6 +4,10 @@ public class PaymentService {
 
     public void paymentProcess(UserAccount account, double amount) {
 
+        if (amount <= 0) {
+            throw new IllegalArgumentException("0보다 커야 합니다.");
+        }
+
         if (account.getBalance() < amount) {
             throw new IllegalStateException("출금 오류.");
         }
