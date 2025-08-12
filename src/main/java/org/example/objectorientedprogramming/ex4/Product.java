@@ -36,4 +36,12 @@ public class Product {
         this.price = price;
     }
 
+    public void changePrice(double price) {
+
+        if (price > 0) {
+            this.price = price;
+        }
+
+    }
+
 }
