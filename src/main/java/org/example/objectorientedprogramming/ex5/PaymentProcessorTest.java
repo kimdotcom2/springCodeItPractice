@@ -12,11 +12,11 @@ public class PaymentProcessorTest {
         for (Payment payment : payments) {
 
             if (payment instanceof CreditCardPayment) {
-                payment.pay(amounts[0]);
+                processor.processPayment(payment, amounts[0]);
             } else if (payment instanceof AccountTransferPayment) {
-                payment.pay(amounts[1]);
+                processor.processPayment(payment, amounts[1]);
             } else if (payment instanceof MobilePayment) {
-                payment.pay(amounts[2]);
+                processor.processPayment(payment, amounts[2]);
             }
 
         }
