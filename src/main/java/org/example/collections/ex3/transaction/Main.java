@@ -15,7 +15,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         Supplier<Transaction> randomTransactionSupplier = () -> {
-            // 간단히 ID는 난수, type은 고정, amount도 난수
             int randId = (int)(Math.random() * 1000);
             double randAmount = Math.random() * 100000;
             return new Transaction(randId, "PAYMENT", randAmount);
@@ -46,46 +45,40 @@ public class Main {
                     double amount = sc.nextDouble();
                     sc.nextLine();
 
-                    Transaction t = new Transaction(id, type, amount);
-                    manager.addTransaction(t);
+                    Transaction transaction = new Transaction(id, type, amount);
+                    manager.addTransaction(transaction);
                     System.out.println("[Info] 트랜잭션이 추가되었습니다.");
                     break;
-
                 case 2:
-                    Transaction randT = randomTransactionSupplier.get();
-                    manager.addTransaction(randT);
-                    System.out.println("[Info] 임의 트랜잭션 추가: " + randT);
+                    Transaction randomTransaction = randomTransactionSupplier.get();
+                    manager.addTransaction(randomTransaction);
+                    System.out.println("[Info] 임의 트랜잭션 추가: " + randomTransaction);
                     break;
-
                 case 3:
                     System.out.print("필터링할 유형 입력: ");
                     String filterType = sc.nextLine();
-                    Predicate<Transaction> byType = tran -> tran.getType().equalsIgnoreCase(filterType);
+                    Predicate<Transaction> predicate = t -> t.getType().equalsIgnoreCase(filterType);
 
-                    List<Transaction> filtered = manager.filterTransactions(byType);
+                    List<Transaction> filtered = manager.filterTransactions(predicate);
                     System.out.println("[결과] 필터링된 트랜잭션: " + filtered);
                     break;
-
                 case 4:
                     System.out.print("할인율(%) 입력: ");
                     double discountPercent = sc.nextDouble();
                     sc.nextLine();
 
-                    Function<Transaction, Double> discountFunc = tran -> tran.getAmount() * (1 - (discountPercent / 100.0));
-                    List<Double> discountedAmounts = manager.mapAmounts(discountFunc);
+                    Function<Transaction, Double> discountFunction = t -> t.getAmount() * (1 - (discountPercent / 100.0));
+                    List<Double> discountedAmounts = manager.mapAmounts(discountFunction);
                     System.out.println("[결과] 변환된 금액 목록: " + discountedAmounts);
                     break;
-
                 case 5:
-                    Consumer<Transaction> printTran = tran -> System.out.println("[Tx] " + tran);
-                    manager.processTransactions(printTran);
+                    Consumer<Transaction> printTransaction = t -> System.out.println("[Tx] " + t);
+                    manager.processTransactions(printTransaction);
                     break;
-
                 case 6:
                     run = false;
                     System.out.println("[Info] 종료합니다.");
                     break;
-
                 default:
                     System.out.println("[Error] 잘못된 입력입니다.");
             }
