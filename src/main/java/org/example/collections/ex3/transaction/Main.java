@@ -37,21 +37,28 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.print("ID 입력: ");
+
                     int id = sc.nextInt();
                     sc.nextLine();
+
                     System.out.print("유형 입력(PAYMENT/REFUND 등): ");
+
                     String type = sc.nextLine();
+
                     System.out.print("금액 입력: ");
+
                     double amount = sc.nextDouble();
                     sc.nextLine();
 
                     Transaction transaction = new Transaction(id, type, amount);
                     manager.addTransaction(transaction);
+
                     System.out.println("[Info] 트랜잭션이 추가되었습니다.");
                     break;
                 case 2:
                     Transaction randomTransaction = randomTransactionSupplier.get();
                     manager.addTransaction(randomTransaction);
+
                     System.out.println("[Info] 임의 트랜잭션 추가: " + randomTransaction);
                     break;
                 case 3:
@@ -60,15 +67,18 @@ public class Main {
                     Predicate<Transaction> predicate = t -> t.getType().equalsIgnoreCase(filterType);
 
                     List<Transaction> filtered = manager.filterTransactions(predicate);
+
                     System.out.println("[결과] 필터링된 트랜잭션: " + filtered);
                     break;
                 case 4:
                     System.out.print("할인율(%) 입력: ");
+
                     double discountPercent = sc.nextDouble();
                     sc.nextLine();
 
                     Function<Transaction, Double> discountFunction = t -> t.getAmount() * (1 - (discountPercent / 100.0));
                     List<Double> discountedAmounts = manager.mapAmounts(discountFunction);
+
                     System.out.println("[결과] 변환된 금액 목록: " + discountedAmounts);
                     break;
                 case 5:
@@ -77,6 +87,7 @@ public class Main {
                     break;
                 case 6:
                     run = false;
+
                     System.out.println("[Info] 종료합니다.");
                     break;
                 default:
