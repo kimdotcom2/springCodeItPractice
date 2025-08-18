@@ -6,7 +6,11 @@ public class CalculatorTest {
 
         Calculator plus = (a, b) -> a + b;
 
-        System.out.println(plus.calculate(10, 20));
+        System.out.println(plus.operate(10, 20));
+
+        Calculator minus = (a, b) -> a - b;
+
+        System.out.println(minus.operate(10, 20));
 
     }
 
