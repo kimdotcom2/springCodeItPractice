@@ -18,7 +18,6 @@ public class HashSetExample {
         System.out.println(countries.size());
         countries.clear();
         System.out.println(countries.size());
-
     }
 
 }
