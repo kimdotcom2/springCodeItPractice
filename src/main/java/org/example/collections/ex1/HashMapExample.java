@@ -22,6 +22,7 @@ public class HashMapExample {
         System.out.println(scores.containsKey("France"));
         scores.remove("France");
         System.out.println(scores);
+        System.out.println(scores.keySet());
 
     }
 
