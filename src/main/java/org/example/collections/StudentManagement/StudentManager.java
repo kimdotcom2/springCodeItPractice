@@ -55,7 +55,7 @@ public class StudentManager {
     public void printAllStudents() {
 
         for (Student student : students) {
-            System.out.println(student.getName() + " : " + student.getAge() + " : " + student.getStudentId());
+            System.out.println(student.getName() + " : " + student.getAge() + "4 : " + student.getStudentId());
         }
 
     }
