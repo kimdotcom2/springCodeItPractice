@@ -52,14 +52,12 @@ public class Main {
                     break;
 
                 case 2:
-                    // Supplier 이용
                     Transaction randT = randomTransactionSupplier.get();
                     manager.addTransaction(randT);
                     System.out.println("[Info] 임의 트랜잭션 추가: " + randT);
                     break;
 
                 case 3:
-                    // Predicate 이용
                     System.out.print("필터링할 유형 입력: ");
                     String filterType = sc.nextLine();
                     Predicate<Transaction> byType = tran -> tran.getType().equalsIgnoreCase(filterType);
@@ -69,7 +67,6 @@ public class Main {
                     break;
 
                 case 4:
-                    // Function 이용
                     System.out.print("할인율(%) 입력: ");
                     double discountPercent = sc.nextDouble();
                     sc.nextLine();
@@ -80,7 +77,6 @@ public class Main {
                     break;
 
                 case 5:
-                    // Consumer 이용
                     Consumer<Transaction> printTran = tran -> System.out.println("[Tx] " + tran);
                     manager.processTransactions(printTran);
                     break;
